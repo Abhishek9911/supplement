@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Suppliment API
+  version: 1.0.0
+  description: Industrial pharmaceutical and nutraceutical commerce API.
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /auth/register:
+    post:
+      summary: Register a new customer
+      responses:
+        '201':
+          description: registration successful
+  /auth/login:
+    post:
+      summary: Log in a user and receive JWT tokens
+      responses:
+        '200':
+          description: login successful
+  /products:
+    get:
+      summary: List active products
+      responses:
+        '200':
+          description: list of visible products
+  /cart:
+    get:
+      summary: Get current cart
+      responses:
+        '200':
+          description: current cart
+  /orders:
+    get:
+      summary: List authenticated customer orders
+      responses:
+        '200':
+          description: order history
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - bearerAuth: []
